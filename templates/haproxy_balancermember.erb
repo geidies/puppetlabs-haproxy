@@ -1,9 +1,9 @@
-<% Array(@ipaddresses).zip(Array(@server_names)).zip(Array(@options)).each do |ipaddress,host,option| -%>
+<% Array(@ipaddresses).zip(Array(@server_names),Array(@options)).each do |ipaddress,host,option| -%>
 <% if @ports -%>
 <%- Array(@ports).each do |port| -%>
-  server <%= host %> <%= ipaddress %>:<%= port %><%= if @define_cookies then " cookie " + host end %> <%= option %>
+  server <%= host %> <%= ipaddress %>:<%= port %><%= if @define_cookies then " cookie " + host end %> <%= option || "check" %>
 <%- end -%>
 <% else -%>
-  server <%= host %> <%= ipaddress %><%= if @define_cookies then " cookie " + host end %> <%= option %>
+  server <%= host %> <%= ipaddress %><%= if @define_cookies then " cookie " + host end %> <%= option || "check" %>
 <%- end -%>
 <% end -%>
